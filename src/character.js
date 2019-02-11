@@ -1,11 +1,34 @@
 import React, { Component } from 'react';
+import * as constants from './constants.js';
 
-function Square(props) {
-  return (
-    <button className="square" onClick={props.buttononClick}>
-      {props.value}
-    </button>
-  );
+class Human extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loc: {x: 0, y:0},
+            face: 0,
+            breath: 1.0,
+            carry: null
+        }
+    }
+
+    render() {
+        return (
+                <img src="human.png" />
+        );
+    }
+}
+
+class Demon extends React.Component {
+    constructor(props) {
+        // for now - eventually need to get from hasura
+        super(props);
+        this.state = {
+            loc: {x: Math.random() * 200.0 - 100.0,
+                  y: Math.random() * 200.0 - 100.0},
+            face: Math.floor(6.0 * Math.random())
+        }
+    }
 }
 
 class Board extends React.Component {
