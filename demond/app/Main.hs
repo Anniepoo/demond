@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
 import Lib
@@ -12,6 +13,7 @@ main = do
   cfg <- defaultSpockCfg () PCNoDatabase ()
   runSpock 8080 (spock cfg app)
 
+type Server a = SpockM () () () a
 
-app :: SpockM () () () ()
-app = return ()
+app :: Server ()
+app = get root (text "Hello!")
