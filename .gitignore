@@ -5,3 +5,5 @@ demond.cabal
 */*.*~
 */*/*.*~
 */*/*/*.*~
+node_modules/.cache/
+

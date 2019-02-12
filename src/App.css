@@ -30,3 +30,100 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#app {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1024px;
+    height: 786px;
+    border: 3px solid #884444;
+    padding: 4px;
+    background-color: #CC8888;
+}
+
+#nameentry {
+    display: none; /* block; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.95;
+    background-color: #CC8888;
+}
+
+#notenoughplayers {
+    display: none; /* block; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.95;
+    background-color: #CC8888;
+}
+
+#gamelayer {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00AAFF;
+}
+
+#gamearea, #gameworld {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 724px;
+    background-color: #22AA44;
+}
+
+#chatoverlay {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ff8800;
+}
+
+#chatbar {
+    display: block;
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 22px;
+    color: #FF8800;
+    border: solid 2px #AA6600;
+}
+
+#needArea {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 22px;
+    height: 36px;
+    width: 100%;
+    border: solid 2px #aa6600;
+    background-color: #aaaa00;
+}
+
+#chatbar p {
+    font-size: 10pt;
+    margin: 0;
+    padding: 0;
+    line-height: 14pt;
+}

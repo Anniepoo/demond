@@ -32,6 +32,10 @@ app = do get root $ lucid $ do
          get "foo" $ lucid $ do
                              h1_ "FOO!"
 
+newtype ServerState = ServerState { notes :: IORef [Note] }
+
+
+
 -- Control.Concurrent  Concurrent and Parallel programming in Haskell
 
 -- https://haskell-at-work.com/episodes/2018-04-09-your-first-web-application-with-spock.html

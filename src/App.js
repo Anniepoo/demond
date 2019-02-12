@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Game from './board.js';
-import Character from './character.js';
+import NameEntry from './nameentry.js';
+import NotEnoughPlayers from './notenoughplayers.js';
+import GameWorld from './gameworld.js';
+import ChatOverlay, { ChatBar } from './chat.js';
+import NeedArea from './needarea.js';
 
 class App extends Component {
-  render() {
-    return (
-	    <Game />
-	    <Character />
+    render() {
+      return (
+      <div id="app">
+        <div id="gamelayer">
+          <div id="gamearea">
+            <GameWorld />
+            <ChatOverlay />
+          </div>
+          <NeedArea />
+          <ChatBar />
+        </div>
+      <NotEnoughPlayers />
+      <NameEntry />
+    </div>
     );
   }
 }
