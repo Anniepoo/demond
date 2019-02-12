@@ -25,6 +25,8 @@ dependencies:
 - http-types
 - mtl
 - text
+- lucid
+- Spock-lucid
 
 library:
   source-dirs: src
