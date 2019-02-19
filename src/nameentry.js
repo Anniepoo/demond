@@ -28,24 +28,28 @@ class NameEntry extends Component {
       this.setState({name: event.target.value});
   }
 
-  handleSubmit(e) {
+  handleSubmit(e, mutatefn) {
+console.log(mutatefn);
             console.log('A name was submitted: ' + this.state.name);
             this.setState({classhide: 'dismissed'});
-            e.preventDefault();
-            mutate();
+            mutatefn();
+e.preventDefault();
   }
 
   render() {
     return (
       <Mutation mutation={ADD_NAME}
-              variables={{p: { name: this.state.name}}} >,
-        (addOnePlayer, { data }) => (
-                    <div id="nameentry" className={this.state.classhide}
-                        onSubmit={this.handleSubmit}>
+              variables={{p: { name: this.state.name}}} >
+        {(addOnePlayer, data) => (
+                    <div id="nameentry" className={this.state.classhide}>
                         <div className="dialogbox">
-                             <form name="getname">
+                             <form name="getname"
+            onSubmit={e => {
+                
+                this.handleSubmit(e, addOnePlayer);
+            }}>
                                  <label htmlFor="name">Player Name</label>
-                                 <input type="text" name="name" 
+                                 <input type="text" name="name"
                                         value={this.state.name}
                                         placeholder="Name"
                                         onChange={this.handleChange}/>
@@ -54,7 +58,7 @@ class NameEntry extends Component {
                              </form>
                         </div>
                     </div>
-       )
+       )}
       </Mutation>
     );
   }
