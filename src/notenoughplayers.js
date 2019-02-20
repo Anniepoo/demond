@@ -18,9 +18,15 @@ class NotEnoughPlayers extends Component {
              {({ loading, error, data }) => {
         	       if (loading) return <span>Loading...</span>;
         	       if (error) return <span>Error :</span>;
+
         	       return (
-        		    <div id="notenoughplayers">
-        		        <p>{data.enough_players.root.enough_players}</p>
+        		    <div id="notenoughplayers"
+                    style={
+                           (data.enough_players[0].root.enough_players  ?
+                           {display: "none"} :
+                           {display: "block"})}>
+                    <p>{console.log(data)}</p>
+        		        <p>{data.enough_players[0].root.enough_players  ? "enough" : "notenough"}</p>
         		    </div>);
         	}}
         	</Subscription>
