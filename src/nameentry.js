@@ -29,11 +29,11 @@ class NameEntry extends Component {
   }
 
   handleSubmit(e, mutatefn) {
-console.log(mutatefn);
-            console.log('A name was submitted: ' + this.state.name);
-            this.setState({classhide: 'dismissed'});
-            mutatefn();
-e.preventDefault();
+	console.log(mutatefn);
+	console.log('A name was submitted: ' + this.state.name);
+	this.setState({classhide: 'dismissed'});
+	mutatefn();
+	e.preventDefault();
   }
 
   render() {
@@ -45,7 +45,6 @@ e.preventDefault();
                         <div className="dialogbox">
                              <form name="getname"
             onSubmit={e => {
-                
                 this.handleSubmit(e, addOnePlayer);
             }}>
                                  <label htmlFor="name">Player Name</label>
