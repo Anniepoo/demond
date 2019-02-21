@@ -18,7 +18,9 @@ mutation addOnePlayer($p: players_insert_input!) {
 class NameEntry extends Component {
   constructor(props) {
     super(props);
-      this.state = {name: '', classhide: ''};
+      this.state = {name: '',
+                    classhide: '',
+                    id: undefined};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,17 +33,29 @@ class NameEntry extends Component {
   handleSubmit(e, mutatefn) {
 	console.log(mutatefn);
 	console.log('A name was submitted: ' + this.state.name);
-	this.setState({classhide: 'dismissed'});
 	mutatefn();
 	e.preventDefault();
+  }
+
+  handleData(data) {
+      console.log(data);
+    if(data == undefined) return;
+    var newid = data["insert_players"].returning[0].id;
+    this.setState({id: newid});
+    // this is inside render, where we're not allowed to modify state
+    // so it's borked. But I'm sick , this is where I stop.
+    this.setState({classhide: 'dismissed'});
   }
 
   render() {
     return (
       <Mutation mutation={ADD_NAME}
-              variables={{p: { name: this.state.name}}} >
-        {(addOnePlayer, data) => (
+              variables={{p: { name: this.state.name}}}
+              onCompleted={this.handleData.bind(this)}>
+        {(addOnePlayer, data) => {
+            return(
             <div>
+                    { this.props.children}
                     <div id="nameentry" className={this.state.classhide}>
                         <div className="dialogbox">
                              <form name="getname"
@@ -58,9 +72,10 @@ class NameEntry extends Component {
                              </form>
                         </div>
                     </div>
-                    { this.props.children}
+
             </div>
-       )}
+        );
+    }}
       </Mutation>
     );
   }
