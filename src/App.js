@@ -50,20 +50,19 @@ class App extends Component {
     render() {
         return (
     <ApolloProvider client={client}>
-      <div id="app">
-        <div id="gamelayer">
-          <div id="gamearea">
-            <GameWorld />
-            <ChatOverlay />
-          </div>
-          <NeedArea />
-          <ChatBar />
+        <div id="app">
+            <NameEntry>
+                <NotEnoughPlayers>
+                    <div id="gamearea">
+                            <GameWorld />
+                            <ChatOverlay />
+                        </div>
+                    <NeedArea />
+                    <ChatBar />
+                </NotEnoughPlayers>
+            </NameEntry>
         </div>
-        <NotEnoughPlayers />
-        <NameEntry />
-      </div>
-      <TestApollo />
-   </ApolloProvider>
+    </ApolloProvider>
     );
   }
 }

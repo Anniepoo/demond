@@ -41,6 +41,7 @@ class NameEntry extends Component {
       <Mutation mutation={ADD_NAME}
               variables={{p: { name: this.state.name}}} >
         {(addOnePlayer, data) => (
+            <div>
                     <div id="nameentry" className={this.state.classhide}>
                         <div className="dialogbox">
                              <form name="getname"
@@ -52,11 +53,13 @@ class NameEntry extends Component {
                                         value={this.state.name}
                                         placeholder="Name"
                                         onChange={this.handleChange}/>
-                                 <input type="submit" name="join" 
+                                 <input type="submit" name="join"
                                         value="Join!" />
                              </form>
                         </div>
                     </div>
+                    { this.props.children}
+            </div>
        )}
       </Mutation>
     );

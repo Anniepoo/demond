@@ -20,14 +20,20 @@ class NotEnoughPlayers extends Component {
         	       if (error) return <span>Error :</span>;
 
         	       return (
-        		    <div id="notenoughplayers"
-                    style={
-                           (data.enough_players[0].root.enough_players  ?
-                           {display: "none"} :
-                           {display: "block"})}>
-                    <p>{console.log(data)}</p>
-        		        <p>{data.enough_players[0].root.enough_players  ? "enough" : "notenough"}</p>
-        		    </div>);
+                        <div>
+                		    <div id="notenoughplayers"
+                                style={
+                                       (data.enough_players[0].root.enough_players  ?
+                                       {display: "none"} :
+                                       {display: "block"})}>
+                                <p>{console.log(data)}</p>
+                    		    <p>{data.enough_players[0].root.enough_players  ?
+                                    "enough" :
+                                    "notenough"}</p>
+                		    </div>
+                            {this.props.children}
+                        </div>
+                    );
         	}}
         	</Subscription>
         );

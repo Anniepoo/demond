@@ -46,7 +46,7 @@
     height: 512px;
     border: 3px solid #884444;
     padding: 4px;
-    background-color: #CC8888;
+    background-color: #008888;
 }
 
 #nameentry {
@@ -124,6 +124,7 @@
     height: 22px;
     color: #FF8800;
     border: solid 2px #AA6600;
+    background-color: bisque;
 }
 
 #needArea {
