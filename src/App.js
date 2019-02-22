@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import NameGatheringGame from './namegg.js';
+import NameGatheringGame from './namegathergame.js';
 import ApolloClient from "apollo-client";
 import gql from "graphql-tag";
 import { ApolloProvider } from "react-apollo";
