@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import NameEntry from './nameentry.js';
-import NotEnoughPlayers from './notenoughplayers.js';
-import GameWorld from './gameworld.js';
-import ChatOverlay, { ChatBar } from './chat.js';
-import NeedArea from './needarea.js';
+import NameGatheringGame from './namegg.js';
 import ApolloClient from "apollo-client";
 import gql from "graphql-tag";
 import { ApolloProvider } from "react-apollo";
@@ -51,16 +47,7 @@ class App extends Component {
         return (
     <ApolloProvider client={client}>
         <div id="app">
-            <NameEntry>
-                <NotEnoughPlayers>
-                    <div id="gamearea">
-                            <GameWorld />
-                            <ChatOverlay />
-                        </div>
-                    <NeedArea />
-                    <ChatBar />
-                </NotEnoughPlayers>
-            </NameEntry>
+            <NameGatheringGame />
         </div>
     </ApolloProvider>
     );
