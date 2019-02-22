@@ -20,7 +20,7 @@ class NameEntry extends Component {
     super(props);
       this.state = {name: '',
                     classhide: '',
-                    id: undefined};
+                    playerid: undefined};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,20 +31,17 @@ class NameEntry extends Component {
   }
 
   handleSubmit(e, mutatefn) {
-	console.log(mutatefn);
 	console.log('A name was submitted: ' + this.state.name);
 	mutatefn();
 	e.preventDefault();
   }
 
   handleData(data) {
-      console.log(data);
     if(data == undefined) return;
     var newid = data["insert_players"].returning[0].id;
-    this.setState({id: newid});
-    // this is inside render, where we're not allowed to modify state
-    // so it's borked. But I'm sick , this is where I stop.
-    this.setState({classhide: 'dismissed'});
+    this.setState({ playerid: newid,
+                    classhide: 'dismissed'});
+    this.forceUpdate();
   }
 
   render() {
@@ -55,7 +52,7 @@ class NameEntry extends Component {
         {(addOnePlayer, data) => {
             return(
             <div>
-                    { this.props.children}
+                    { this.props.children }
                     <div id="nameentry" className={this.state.classhide}>
                         <div className="dialogbox">
                              <form name="getname"
