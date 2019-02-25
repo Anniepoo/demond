@@ -30,7 +30,7 @@ class ChattyGame extends Component {
             <div id="maingame">
                 <div id="gamearea">
                     <GameWorld playerid={this.props.playerid}
-                        addlistener={this.state.addListenMove} />
+                        addlistener={this.addListenMove} />
                     <ChatOverlay playerid={this.props.playerid} />
                 </div>
                 <NeedArea />

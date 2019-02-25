@@ -32,7 +32,7 @@ app = do get root $ lucid $ do
          get "foo" $ lucid $ do
                              h1_ "FOO!"
 
-newtype ServerState = ServerState { notes :: IORef [Note] }
+-- newtype ServerState = ServerState { notes :: IORef [Note] }
 
 
 
