@@ -38,7 +38,7 @@ class NameGatheringGame extends Component {
   }
 
   handleData(data) {
-    if(data == undefined) return;
+    if(data === undefined) return;
     var newid = data["insert_players"].returning[0].id;
     this.setState({ playerid: newid,
                     classhide: 'dismissed'});

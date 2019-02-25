@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import gql from "graphql-tag";
 import { Subscription } from "react-apollo";
-import GameWorld from './gameworld.js';
-import ChatOverlay, { ChatBar } from './chat.js';
-import NeedArea from './needarea.js';
 import ChattyGame from './chattygame.js';
 
 const WATCH_PLAYERS = gql`

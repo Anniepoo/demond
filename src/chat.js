@@ -63,26 +63,55 @@ export class ChatBar extends Component {
     }
 
     handleChange(e, mutatefn){
-        console.log(e);
-        console.log(e.key);
-        console.log(e.keyCode);
-        const key = e.key;
         var code;
-        	if (e.keyCode) code = e.keyCode;
-        	else if (e.which) code = e.which;
-        	var character = String.fromCharCode(code);
-            console.log('Code was ' + code.toString());
-        	console.log('Character was ' + character);
-            // return 13
+
+    	if (e.keyCode) code = e.keyCode;
+    	else if (e.which) code = e.which;
+    	var character = String.fromCharCode(code);
+        console.log('Code was ' + code.toString());
+    	console.log('Character was ' + character);
+
+        if (this.state.ischatting && code === 13) { // enter key
+            var contents = document.getElementById("chatbar").value;
+            mutatefn({variables:
+                {chat:
+                    {   player: this.props.playerid,
+                        contents: document.getElementById("chatbar").value
+                    }
+                }
+            });
+            e.preventDefault();
+            document.getElementById("chatbar").value = "";
+        } else if (!this.state.ischatting && character === "/") {
+            this.setState({ischatting: true});
+            document.getElementById("chatbar").value = "";
+            e.preventDefault();
+        } else if (this.state.ischatting && character === "/") {
+            this.setState({ischatting: false});
+            document.getElementById("chatbar").value = "";
+            e.preventDefault();
+        } else if (!this.state.ischatting) {
+            if(this.state.gamemove !== undefined)
+                this.state.gamemove(character);
+            document.getElementById("chatbar").value = "";
+            e.preventDefault();
+        }
+    }
+
+    handleData(data) {
+        document.getElementById("chatbar").value = "";
     }
 
     render() {
         return (
-            <Mutation mutation={ADD_CHAT}>
+            <Mutation   mutation={ADD_CHAT}
+                        onCompleted={this.handleData.bind(this)}>
             {(addchat, data) => {
                 return(
-                    <div id="chatbar">
-                        <input type="text" onKeyPress={e => this.handleChange(e, addchat)} />
+                    <div id="chatbarbox">
+                        <input id="chatbar" type="text"
+                                onKeyPress={e => this.handleChange(e, addchat)}
+                                className={this.state.ischatting ? "chatting" : "playing"}/>
                     </div>
                 );
             }}
