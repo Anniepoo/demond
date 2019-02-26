@@ -13,15 +13,20 @@ import Lucid
 
 import Control.Concurrent (forkIO, threadDelay)
 
+import System.Environment (getEnv)
+
 -- runSpock :: Port -> IO Middleware -> IO ()
 
 main :: IO ()
 main = do
-  cfg <- defaultSpockCfg () PCNoDatabase ()
-  forkIO (do putStrLn "forked thread"
-             threadDelay 2_000_000
-             putStrLn "end thread")
-  runSpock 8080 (spock cfg app)
+    port <- (read <$> getEnv "PORT")
+    cfg <- defaultSpockCfg () PCNoDatabase ()
+    forkIO  (
+        do
+            putStrLn "forked thread"
+            threadDelay 2_000_000
+            putStrLn "end thread")
+    runSpock port (spock cfg app)
 
 type Server a = SpockM () () () a
 
