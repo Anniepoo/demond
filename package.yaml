@@ -27,6 +27,7 @@ dependencies:
 - text
 - lucid
 - Spock-lucid
+- aeson
 
 library:
   source-dirs: src

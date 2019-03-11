@@ -37,3 +37,7 @@ and uses the fine/stack buildset
 ```
 heroku buildpacks:set fine/stack
 ```
+
+TODO  - at some point use the env variables to set a difficulty level
+
+heroku config:set VAR_NAME=var_value

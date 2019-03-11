@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "b451349a-f27f-4b1f-9b78-3bf4d767efd5",
+		"name": "simple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "towers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"query\": \"{towers{col row progress}}\"}\n"
+				},
+				"url": {
+					"raw": "https://rakshasa-game.herokuapp.com/v1alpha1/graphql",
+					"protocol": "https",
+					"host": [
+						"rakshasa-game",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1alpha1",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "towerswvariables",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"query\": \"query some_towers($n: Int!){towers(limit: $n){col row progress}}\",\n\t\"variables\": {\"n\": 1}\n  \n}\n"
+				},
+				"url": {
+					"raw": "https://rakshasa-game.herokuapp.com/v1alpha1/graphql",
+					"protocol": "https",
+					"host": [
+						"rakshasa-game",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1alpha1",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
