@@ -9,6 +9,7 @@ import Network.Wreq
 import Control.Lens
 import GHC.Generics
 import Data.Aeson
+import Data.Aeson.Types
 import Data.Aeson.Lens (_String, key)
 import Data.Map
 import Network.Wreq.Types
@@ -30,3 +31,13 @@ main = do
     let p = Person { num = 4, str = "taco"}
     rr <- post "http://httpbin.org/post" (toJSON p) -- ["num" := (3 :: Int), "str" := ("wat" :: String)]
     putStrLn $ show $ rr ^? responseBody . key "json"
+    putStrLn $ show $ rr ^? responseBody
+    let maybejson = rr ^? responseBody . key "json"
+    case maybejson of
+        Nothing -> putStrLn "invalid json"
+        Just json -> do
+            let rp = fromJSON json :: Result Person
+            putStrLn $ show rp
+
+-- alternative - use responseBody and ^. and use decode
+--       decode body :: Maybe Person
