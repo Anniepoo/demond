@@ -49,6 +49,8 @@ extra-deps:
 - Spock-lucid-0.4.0.1@sha256:fa2c6ae737bad26767820af29c913140a657acbf745e90c9f9d4a184953855dc
 - wreq-0.5.3.2
 - aeson-1.4.2.0
+- http-client-0.6.2@sha256:717d9a038f168b9a29bc3a32baa5bbf8cfde76a0fdd1e77e45f9c3271a5da5ac
+
 
 
 # Override default flag values for local packages and extra-deps

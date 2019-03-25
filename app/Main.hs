@@ -28,7 +28,7 @@ import          GameAction
 
 main :: IO ()
 main = do
---    let game = return initGame
+    game <- initGame
     port <- (read <$> getEnv "PORT")
     cfg <- defaultSpockCfg () PCNoDatabase ()
     forkIO  (

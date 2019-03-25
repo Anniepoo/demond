@@ -28,6 +28,10 @@ dependencies:
 - lucid
 - Spock-lucid
 - aeson
+- wreq
+- lens
+- lens-aeson
+- containers
 
 library:
   source-dirs: src

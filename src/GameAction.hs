@@ -1,8 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE NumericUnderscores #-}
 
-module GameAction (Piece) where
+module GameAction (initGame, Piece) where
 
+import RakshasaClient (truncateServer)
 data Piece = Piece {
         id :: Int,
         pieceType :: String,
@@ -16,12 +17,13 @@ data Piece = Piece {
         progress :: Float
     }
 
-{-
-initGame :: [Piece]
-initGame =
-    do
-        IO []
--}
+initGame :: IO [Piece]
+initGame = do
+    truncateServer
+    return initVals
+
+initVals :: [Piece]
+initVals = []
 
 -- catMaybes
 -- maybeDemon
